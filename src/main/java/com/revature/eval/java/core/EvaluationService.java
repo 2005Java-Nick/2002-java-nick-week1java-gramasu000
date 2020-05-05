@@ -208,7 +208,22 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String cleanNumber = "";
+
+    // Collect all digits in the string 
+    for (int i = 0; i < string.length(); i++) {
+      char c = string.charAt(i);
+      if (Character.isDigit(c)) {
+        cleanNumber += string.substring(i, i+1);
+      }
+    }
+
+    // Remove the leading one if it is there
+    if (cleanNumber.substring(0,1).equals("1")) {
+      return cleanNumber.substring(1);
+    } else {
+      return cleanNumber;
+    }
 	}
 
 	/**
