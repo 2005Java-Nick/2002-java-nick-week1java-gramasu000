@@ -3,6 +3,7 @@ package com.revature.eval.java.core;
 import java.time.temporal.Temporal;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 
 public class EvaluationService {
 
@@ -136,7 +137,42 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+    HashMap<Character, Integer> letterValues = new HashMap<Character, Integer>();
+    letterValues.put('a', 1);
+    letterValues.put('e', 1);
+    letterValues.put('i', 1);
+    letterValues.put('o', 1);
+    letterValues.put('u', 1);
+    letterValues.put('l', 1);
+    letterValues.put('n', 1);
+    letterValues.put('r', 1);
+    letterValues.put('s', 1);
+    letterValues.put('t', 1);
+    letterValues.put('d', 2);
+    letterValues.put('g', 2);
+    letterValues.put('b', 3);
+    letterValues.put('c', 3);
+    letterValues.put('m', 3);
+    letterValues.put('p', 3);
+    letterValues.put('f', 4);
+    letterValues.put('h', 4);
+    letterValues.put('v', 4);
+    letterValues.put('w', 4);
+    letterValues.put('y', 4);
+    letterValues.put('k', 5);
+    letterValues.put('j', 8);
+    letterValues.put('x', 8);
+    letterValues.put('q', 10);
+    letterValues.put('z', 10);
+ 
+    int result = 0;
+    String lowerCaseString = string.toLowerCase();
+
+    for(int i = 0; i < string.length(); i++) {
+      result += letterValues.get(lowerCaseString.charAt(i));
+    }
+
+    return result;
 	}
 
 	/**
