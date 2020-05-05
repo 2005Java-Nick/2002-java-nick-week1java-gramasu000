@@ -31,8 +31,21 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		return null;
-	}
+	  String result = "";
+    char firstChar = phrase.charAt(0);
+    if (Character.isAlphabetic(firstChar)) {
+      result += phrase.substring(0,1);
+    }
+    System.out.println("Result: " + result);
+    for (int i = 1; i < phrase.length(); i++) {
+      char ithChar = phrase.charAt(i);
+      char beforeChar = phrase.charAt(i-1); 
+      if (!Character.isAlphabetic(beforeChar) && Character.isAlphabetic(ithChar)) {
+        result += phrase.substring(i, i+1);
+      }
+    }
+    return result;
+  }
 
 	/**
 	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
