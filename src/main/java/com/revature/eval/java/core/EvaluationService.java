@@ -330,7 +330,16 @@ public class EvaluationService {
 	 */
 	public String toPigLatin(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+	  String[] tokens = string.toLowerCase().split(" ");	
+    for (int i = 0; i < tokens.length; i++) {
+      String token = tokens[i];
+      String[] sounds = token.split("[aeiou]", 2);
+      int j = sounds[0].length();
+      String missingVowel = token.substring(j, j+1);
+      String translated = missingVowel + sounds[1] + sounds[0] + "ay";
+      tokens[i] = translated;
+    } 
+    return String.join(" ", tokens);
 	}
 
 	/**
