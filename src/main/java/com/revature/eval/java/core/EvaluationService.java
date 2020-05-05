@@ -237,7 +237,20 @@ public class EvaluationService {
 	 */
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+    HashMap<String, Integer> wordCountMap = new HashMap<String, Integer>();
+    String[] tokens = string.split(" ");
+    for (int i = 0; i < tokens.length; i++) {
+      String token = tokens[i];
+      if (!token.equals("")) {
+        if (wordCountMap.containsKey(token)) {
+          int count = wordCountMap.get(token);
+          wordCountMap.put(token, ++count);
+        } else {
+          wordCountMap.put(token, 1);
+        }
+      }
+    } 
+		return wordCountMap;
 	}
 
 	/**
