@@ -45,7 +45,7 @@ public class EvaluationService {
         result += phrase.substring(i, i+1);
       }
     }
-    return result;
+    return result.toUpperCase();
   }
 
 	/**
