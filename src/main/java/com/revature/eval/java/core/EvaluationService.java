@@ -330,7 +330,7 @@ public class EvaluationService {
 	 */
 	public String toPigLatin(String string) {
 		// TODO Write an implementation for this method declaration
-	  String[] tokens = string.toLowerCase().split(" ");	
+    String[] tokens = string.toLowerCase().split(" ");	
     for (int i = 0; i < tokens.length; i++) {
       String token = tokens[i];
       String[] sounds = token.split("[aeiou]", 2);
@@ -359,7 +359,17 @@ public class EvaluationService {
 	 */
 	public boolean isArmstrongNumber(int input) {
 		// TODO Write an implementation for this method declaration
-		return false;
+    if (input == 0) {
+      return true;
+    }
+		int numDigits = (int)Math.log10(input) + 1;
+    int sumOfPowers = 0;
+    int num = input;
+    while (num != 0) {
+      sumOfPowers += (int)Math.pow(num % 10, numDigits);
+      num = num / 10;
+    }
+    return (input == sumOfPowers);
 	}
 
 	/**
