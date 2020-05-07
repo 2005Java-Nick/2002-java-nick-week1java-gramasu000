@@ -435,7 +435,26 @@ public class EvaluationService {
 
 		public String rotate(String string) {
 			// TODO Write an implementation for this method declaration
-			return null;
+			String lowerCaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
+			String upperCaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      int numAlphabets = 26; 
+      char[] newCharArray = string.toCharArray();
+      for (int i = 0; i < newCharArray.length; i++) {
+        char c = newCharArray[i];
+        if (Character.isLetter(c)) {
+          if (Character.isLowerCase(c)) {
+            int j = lowerCaseAlphabet.indexOf(c);
+            j = (j + this.key) % numAlphabets;
+            c = lowerCaseAlphabet.charAt(j);
+          } else if (Character.isUpperCase(c)) {
+            int j = upperCaseAlphabet.indexOf(c);
+            j = (j + this.key) % numAlphabets;
+            c = upperCaseAlphabet.charAt(j);
+          }
+          newCharArray[i] = c;
+        }
+      }
+      return new String(newCharArray);
 		}
 
 	}
