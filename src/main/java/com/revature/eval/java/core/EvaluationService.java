@@ -767,7 +767,36 @@ public class EvaluationService {
 	 */
 	public int solveWordProblem(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		String[] tokens = string.split("[ ?]");
+    String operation = "";
+    int[] nums = new int[2];
+    int index = 0;
+    for (String token : tokens) {
+      if (token.equals("plus") || token.equals("minus") 
+          || token.equals("multiplied") || token.equals("divided")) {
+        operation = token;
+      } else {
+        try {
+          int i = Integer.parseInt(token);
+          nums[index] = i;
+          index++; 
+        } catch (NumberFormatException e) {
+          continue;
+        }
+      }
+    }
+
+    switch (operation) {
+      case "plus":
+        return nums[0] + nums[1];
+      case "minus":
+        return nums[0] - nums[1];
+      case "multiplied":
+        return nums[0] * nums[1];
+      case "divided":
+        return nums[0] / nums[1];
+    }
+    return 0;
 	}
 
 }
