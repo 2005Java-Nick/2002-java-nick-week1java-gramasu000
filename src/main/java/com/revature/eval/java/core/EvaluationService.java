@@ -621,7 +621,14 @@ public class EvaluationService {
 	 */
 	public boolean isPangram(String string) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		String alphabet = "abcdefghijklmnopqrstuvwxyz";
+    for (int i = 0 ; i < string.length(); i++) {
+      String letter = string.substring(i, i+1).toLowerCase();
+      if (alphabet.indexOf(letter) != -1) {
+        alphabet = alphabet.replaceAll(letter, "");
+      }
+    }
+    return alphabet.equals("");
 	}
 
 	/**
