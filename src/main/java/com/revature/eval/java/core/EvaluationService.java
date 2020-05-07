@@ -529,8 +529,24 @@ public class EvaluationService {
 		 */
 		public static String encode(String string) {
 			// TODO Write an implementation for this method declaration
-			return null;
-		}
+      /*String lowerCase = "abcdefghijklmnopqrstuvwxyz";
+		  int numAlphabets = 26;
+      String encodedString = ""; 
+      for (int i = 0; i < string.length(); i++) {
+        char c = string.toLowerCase().charAt(i);
+        if (Character.isDigit(c)) {
+          encodedString += string.substring(i,i+1);
+        } else if (Character.isLetter(c)) {
+          int j = lowerCase.indexOf(c);
+          encodedString += lowerCase.substring(numAlphabets - j - 1, numAlphabets - j); 
+        }
+        
+        if (i % 5 == 0) {
+          encodedString += " ";
+        }
+      }
+      return encodedString;*/
+    }
 
 		/**
 		 * Question 14
