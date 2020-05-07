@@ -473,7 +473,26 @@ public class EvaluationService {
 	 */
 	public int calculateNthPrime(int i) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		if (i == 0) {
+      throw new IllegalArgumentException();
+    }
+    ArrayList<Integer> primes = new ArrayList<Integer>();
+    int number = 2;
+    while (primes.size() < i) {
+      boolean addToPrimes = true;
+      for (int prime : primes) {
+        if (number % prime == 0) {
+          addToPrimes = false;
+          break;
+        }
+      }
+      if (addToPrimes) {
+        primes.add(number);
+      }
+      number++;
+    }
+    
+    return primes.get(i-1);
 	}
 
 	/**
