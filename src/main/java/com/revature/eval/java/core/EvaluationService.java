@@ -711,7 +711,31 @@ public class EvaluationService {
 	 */
 	public boolean isLuhnValid(String string) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		int length = string.length();
+    int result = 0;
+    int numIndex = 1;
+    if (length < 2) { return false; }
+    for (int i = length-1; i >= 0; i--) {
+      String letter = string.substring(i, i+1);
+      if (!letter.matches("[0123456789 ]")) { 
+        return false; 
+      }
+      else {
+        if (!letter.equals(" ")) {
+          int number = Integer.parseInt(letter);
+          if (numIndex % 2 == 0) {
+            number *= 2;
+            if (number > 9) {
+              number -= 9;
+            }
+          }
+          result += number;
+          numIndex++;
+        }   
+      }
+    }  
+    
+    return (result % 10 == 0);
 	}
 
 	/**
