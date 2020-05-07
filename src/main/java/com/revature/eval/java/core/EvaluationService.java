@@ -659,7 +659,18 @@ public class EvaluationService {
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		int result = 0;
+    for (int number = 1; number < i; number++) {
+      for (int k = 0; k < set.length; k++) {
+        int divisor = set[k];
+        if (number % divisor == 0) {
+          result += number;
+          break;
+        }
+      } 
+    }
+    
+    return result;
 	}
 
 	/**
