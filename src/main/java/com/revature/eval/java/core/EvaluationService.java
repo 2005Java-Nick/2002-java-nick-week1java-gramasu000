@@ -4,6 +4,7 @@ import java.time.temporal.Temporal;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class EvaluationService {
 
@@ -384,7 +385,18 @@ public class EvaluationService {
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
-		return null;
+    ArrayList<Long> primeFactors = new ArrayList<Long>();
+    long dividend = l;
+    while (dividend != 1) {
+      long factor = 2;
+      while (dividend % factor != 0) {
+        factor++;
+      }
+      primeFactors.add(factor);
+      dividend /= factor; 
+    }
+    
+    return primeFactors;	
 	}
 
 	/**
