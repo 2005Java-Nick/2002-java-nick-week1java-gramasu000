@@ -529,7 +529,7 @@ public class EvaluationService {
 		 */
 		public static String encode(String string) {
 			// TODO Write an implementation for this method declaration
-      /*String lowerCase = "abcdefghijklmnopqrstuvwxyz";
+      String lowerCase = "abcdefghijklmnopqrstuvwxyz";
 		  int numAlphabets = 26;
       String encodedString = ""; 
       for (int i = 0; i < string.length(); i++) {
@@ -540,12 +540,11 @@ public class EvaluationService {
           int j = lowerCase.indexOf(c);
           encodedString += lowerCase.substring(numAlphabets - j - 1, numAlphabets - j); 
         }
-        
-        if (i % 5 == 0) {
+        if (encodedString.length() % 6 == 5) {
           encodedString += " ";
         }
       }
-      return encodedString;*/
+      return encodedString;
     }
 
 		/**
