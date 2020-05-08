@@ -331,16 +331,52 @@ public class EvaluationService {
 	 */
 	public String toPigLatin(String string) {
 		// TODO Write an implementation for this method declaration
+    
+    // We assume string is a series of words each separated by a single space
+    // We split the string into tokens, which are the words
     String[] tokens = string.toLowerCase().split(" ");	
+    
+    // We make a new array of words, which will be filled by the pig-latin words
+    String[] newTokens = new String[tokens.length];
+    
+    // A string of vowels. If a character is in the string, it is a vowel.
+    String vowels = "aeiou";
+
+    // Go through all of the tokens
     for (int i = 0; i < tokens.length; i++) {
+      
+      // Save token as a variable
       String token = tokens[i];
-      String[] sounds = token.split("[aeiou]", 2);
-      int j = sounds[0].length();
-      String missingVowel = token.substring(j, j+1);
-      String translated = missingVowel + sounds[1] + sounds[0] + "ay";
-      tokens[i] = translated;
-    } 
-    return String.join(" ", tokens);
+      
+      // Find the first vowel of the token
+      int j = 0;
+      while (j < token.length()) {
+        // Save character as a variable
+        char c = token.charAt(j);
+        // Check if it is a vowel
+        if (vowels.indexOf(c) != -1) {
+          // Find the second vowel of the token
+          // if token starts with "qu"
+          // If that is not the case, break from the loop.
+          if (!(c == 'u' && j == 1 && token.charAt(0) == 'q')) {
+            break;
+          } 
+        }
+        // If the character is not a vowel, check the next character
+        j++;
+      }
+
+      // Split the string into two, using the vowel as divider
+      String substring1 = token.substring(0, j);
+      String substring2 = token.substring(j);
+
+      // Combine them in reverse order, and add "ay"
+      newTokens[i] = substring2 + substring1 + "ay";
+    }
+    
+    // Join all the pig-latin words, separated by a space.
+    // We assume here that sentence was a series of words separated by a single space.
+    return String.join(" ", newTokens);
 	}
 
 	/**
