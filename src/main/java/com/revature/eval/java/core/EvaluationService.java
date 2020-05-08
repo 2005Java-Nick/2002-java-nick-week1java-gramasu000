@@ -464,17 +464,26 @@ public class EvaluationService {
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
+    
+    // Set up the ArrayList
     ArrayList<Long> primeFactors = new ArrayList<Long>();
+    
+    // Algorithm: Find the first factor of dividend, which is l.
+    // One you find it, divide by that factor,
+    //    and find first factor of new dividend.
+    // continue until dividend is 1.
     long dividend = l;
     while (dividend != 1) {
       long factor = 2;
       while (dividend % factor != 0) {
         factor++;
       }
+      // If you find a factor, add it to arrayList
       primeFactors.add(factor);
       dividend /= factor; 
     }
     
+    // Return arrayList
     return primeFactors;	
 	}
 
@@ -514,25 +523,43 @@ public class EvaluationService {
 
 		public String rotate(String string) {
 			// TODO Write an implementation for this method declaration
-			String lowerCaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
+			
+      // A string of all the alphabet
+      // Useful for rotating
+      String lowerCaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
 			String upperCaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      int numAlphabets = 26; 
+      int numAlphabets = 26;
+
+      // Convert string to charArray 
       char[] newCharArray = string.toCharArray();
+
+      // Go through the charArray and encode each letter character
       for (int i = 0; i < newCharArray.length; i++) {
         char c = newCharArray[i];
+        // Check if character is a letter
         if (Character.isLetter(c)) {
           if (Character.isLowerCase(c)) {
+            // Find the index of where the character is on the alphabet (lowercase)
             int j = lowerCaseAlphabet.indexOf(c);
+            // Add the key to index, modulo the number of alphabets
             j = (j + this.key) % numAlphabets;
+            // Get the encoded character
             c = lowerCaseAlphabet.charAt(j);
           } else if (Character.isUpperCase(c)) {
+            // Find the index of where the character is on the alphabet (uppercase)
             int j = upperCaseAlphabet.indexOf(c);
+            // Add the key to index, modulo the number of alphabets
             j = (j + this.key) % numAlphabets;
+            // Get the encoded character
             c = upperCaseAlphabet.charAt(j);
           }
+
+          // Replace character with encoded version
           newCharArray[i] = c;
         }
       }
+
+      // Make a new string from the character array
       return new String(newCharArray);
 		}
 
