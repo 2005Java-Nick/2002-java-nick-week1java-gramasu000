@@ -258,19 +258,36 @@ public class EvaluationService {
 	 */
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
+    
+    // Make a new map (word is the key and frequency is the value)
     HashMap<String, Integer> wordCountMap = new HashMap<String, Integer>();
+    
+    // Split the string into an array of words
+    // The regular expression includes punctuation and whitespace
     String[] tokens = string.split("[ .,!?\\-\\n\\t]");
+    
+    // For each token
     for (int i = 0; i < tokens.length; i++) {
       String token = tokens[i];
+
+      // Make sure we do not count "" as a word
       if (!token.equals("")) {
+      
         if (wordCountMap.containsKey(token)) {
+          // If word is a key in map
+          // Increment the frequency
           int count = wordCountMap.get(token);
           wordCountMap.put(token, ++count);
         } else {
+          // If word is not a key in the map
+          // This is the first occurance of the word
+          // Add the word with frequency 1
           wordCountMap.put(token, 1);
         }
       }
     } 
+
+    // Return the map
 		return wordCountMap;
 	}
 
