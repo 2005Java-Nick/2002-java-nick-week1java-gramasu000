@@ -433,9 +433,13 @@ public class EvaluationService {
 	 */
 	public boolean isArmstrongNumber(int input) {
 		// TODO Write an implementation for this method declaration
+    
+    // Special case of 0
     if (input == 0) {
       return true;
     }
+
+    // Calculate the sum of digits each raised to numDigits
 		int numDigits = (int)Math.log10(input) + 1;
     int sumOfPowers = 0;
     int num = input;
@@ -443,6 +447,8 @@ public class EvaluationService {
       sumOfPowers += (int)Math.pow(num % 10, numDigits);
       num = num / 10;
     }
+
+    // Return boolean value of whether they are equal
     return (input == sumOfPowers);
 	}
 
