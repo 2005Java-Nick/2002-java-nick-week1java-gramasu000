@@ -153,6 +153,9 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
+    
+    // Set up a map that has the letter as key and the score as value
+    // For all 26 letters
     HashMap<Character, Integer> letterValues = new HashMap<Character, Integer>();
     letterValues.put('a', 1);
     letterValues.put('e', 1);
@@ -184,6 +187,8 @@ public class EvaluationService {
     int result = 0;
     String lowerCaseString = string.toLowerCase();
 
+    // For each character, get the score from the HashMap
+    // and add it to result 
     for(int i = 0; i < string.length(); i++) {
       result += letterValues.get(lowerCaseString.charAt(i));
     }
