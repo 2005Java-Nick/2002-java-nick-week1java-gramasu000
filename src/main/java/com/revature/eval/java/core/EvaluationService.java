@@ -33,19 +33,34 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
+    
+    // We start our result String as empty 
 	  String result = "";
+    
+    // We check the first character of phrase if it is a letter
     char firstChar = phrase.charAt(0);
-    if (Character.isAlphabetic(firstChar)) {
+    if (Character.isLetter(firstChar)) {
+      // If it is, we add it to our acronym
       result += phrase.substring(0,1);
     }
-    System.out.println("Result: " + result);
+    
+    // We check the rest of the string to check for each character
+    // that is a letter after a non-letter.
     for (int i = 1; i < phrase.length(); i++) {
+      // Current Character
       char ithChar = phrase.charAt(i);
-      char beforeChar = phrase.charAt(i-1); 
-      if (!Character.isAlphabetic(beforeChar) && Character.isAlphabetic(ithChar)) {
+      // Previous Character
+      char beforeChar = phrase.charAt(i-1);
+
+      // Check that previous character is not a letter
+      // and current character is a letter 
+      if (!Character.isLetter(beforeChar) && Character.isLetter(ithChar)) {
+        // If it is, we add it to our acronym
         result += phrase.substring(i, i+1);
       }
     }
+
+    // Capitalize all letters in acronym
     return result.toUpperCase();
   }
 
